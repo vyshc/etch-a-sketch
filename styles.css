@@ -1,0 +1,30 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: lavenderblush;
+}
+
+button{
+    padding: 10px;
+    margin: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#gridContainer{
+    background-color: aliceblue;
+    height: 600px;
+    width: 600px;
+    margin: 20px;
+}
+
+.row{
+    background-color: dimgrey;
+    border: 1px solid gold;
+    display: flex;
+}
+
+.col{
+    background-color: dimgrey;
+    border: 1px solid gold;
+    height: inherit;
+}
