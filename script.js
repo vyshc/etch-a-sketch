@@ -1,7 +1,6 @@
 const body = document.querySelector("body");
-const gridContainer = document.querySelector("#gridContainer");
-const btnGridSize = document.querySelector("#gridSize");
-const btnGridClear = document.querySelector("#gridClear");
+const container = document.querySelector("#container");
+const resize = document.querySelector("#resize");
 
 //intially -->
 // let n = 5 (create a grid of 5x5)
@@ -10,35 +9,56 @@ const btnGridClear = document.querySelector("#gridClear");
 //render grid accordingly
 //use one function with n as argument to render grid
 
-let n = 5;
+let n = 5; //grid size is 5x5 initially
 
 function renderGrid(n) {
-    gridContainer.innerHTML="";
+  container.innerHTML = "";
+  //create row div
   for (let i = 0; i < n; i++) {
     const rowDiv = document.createElement("div");
     rowDiv.classList.add("row");
     rowDiv.style.height = `${Math.floor(600 / n)}px`;
-    gridContainer.appendChild(rowDiv);
+    container.appendChild(rowDiv);
+    //create column divs within each row
     for (let j = 0; j < n; j++) {
       const colDiv = document.createElement("div");
       colDiv.classList.add("col");
       colDiv.style.width = `${Math.floor(600 / n)}px`;
       rowDiv.appendChild(colDiv);
-      colDiv.addEventListener("mouseover",()=>{
-        colDiv.style.backgroundColor= "black";
+      let hoverCount = 0,
+        isHover = false,
+        color = "";
+      colDiv.addEventListener("mouseover", () => {
+        hoverCount++;
+        if (isHover == false) {
+          color = randomizeColor();
+        }
+        colDiv.style.backgroundColor = `rgb(${color},${hoverCount * 0.1})`;
+        isHover = true;
       });
     }
   }
 }
 
+function randomizeColor() {
+  let red = Math.floor(Math.random() * 255);
+  let blue = Math.floor(Math.random() * 255);
+  let green = Math.floor(Math.random() * 255);
+
+  return `${red}, ${blue}, ${green}`;
+}
+
 renderGrid(n); //inital 5x5 grid
 
-btnGridSize.addEventListener("click", () => {
+resize.addEventListener("click", () => {
   let n = prompt("enter grid size");
+  if (n > 100 || n == null) {
+    alert("value should be less than 100, try again");
+    return;
+  }
   renderGrid(n);
 });
 
-//what's left: 
-//clear Grid button functionality
+//what's left:
 // mouseover changes background by only 10% opacity
 // randomize the squares’ RGB values with each interaction.

@@ -10,21 +10,21 @@ button{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-#gridContainer{
-    background-color: aliceblue;
+#container{
+    background-color: white;
     height: 600px;
     width: 600px;
     margin: 20px;
 }
 
 .row{
-    background-color: dimgrey;
-    border: 1px solid gold;
+    background-color: white;
+    border: 1px solid black;
     display: flex;
 }
 
 .col{
-    background-color: dimgrey;
-    border: 1px solid gold;
+    background-color: white;
+    border: 1px solid black;
     height: inherit;
 }
